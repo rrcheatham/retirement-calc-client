@@ -1,5 +1,12 @@
- language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: h5NfM+vEd4F2oGx2/jdw5SdLbQaDByusAN2ct5A7NQp7brpzC9dVsFY/AMF+WwwYNa5cHZXULiLAN8nXLYIb/BTLfuTaaF0S4hFWJfy9hn0UZoChNooHMpA55ttRTnDb1at29MWyKxuWttqBB3bKIYtou7hj3hM5K1oOKFSHkeSf1Qgqf1D6S97Ou7cKYTAgGIqLj73zjNzQjlGRlNX/YxCy3j39I7mLtwQ2ZhAj4o48pAH5UXOnLT3DK4TIWfsQxuvnpv8GqvtKnpWCWVdeExh5b39LfcqQOGkbJDxjgJPrLhC6i8GYqj1CXoPXmpIGf1RB+roLerB0yvaxniG34MCzpqQ2ZiKxqtZ9SkjDlT78lSaBxDScFGaCzaIA06FzeHyuhwZl2J3DtVHeyqaE+NlpkS5eq88gwHoqVPs4vuJPu7Xru5bg68lLMKebF64JbtTaP5kcVfE0DdYu3RA702e7Ey2CP8ps2JGismwyInHOBCtrJQG89W/jSxMWx2wnC+5Ku9THPY73YB7sx85FlgIzB3q87iMGQZ3GOhIzSWWG2K1pjFNbPDRAKzXWS1YIw/bl0iVyujxF+BgeDXTyvjkCbovGUPyA4nYcz5aW5kzRAym0bAfo0GUAt/usz/1gU84TzR5gkZAuQ7ldXxy7uzx9HNgtMlepyh+yM3olDws=
+  app: arcane-taiga-47013
+  on:
+    repo: rrcheatham/retirement-calc-client
