@@ -1,0 +1,20 @@
+.recharts-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#barChartTitle {
+    text-align: center;
+    text-shadow: 1px 1px #646464;
+    margin-top: 0;
+}
+
+#barChartDiv {
+    border-bottom: 15px solid rgb(161, 161, 161);
+    border-left: 2px solid rgb(170, 169, 169);
+    border-right: 2px solid rgb(170, 169, 169);
+    margin-top: 0;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
