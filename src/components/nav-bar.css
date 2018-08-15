@@ -45,4 +45,9 @@ nav {
        margin-left: 5px;
    }
 
+   button a{
+       text-decoration: none;
+       color: #fff;
+   }
+
 

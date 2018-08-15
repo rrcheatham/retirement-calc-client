@@ -51,7 +51,7 @@ export class SignUpForm extends React.Component {
                 >
                 Start Planning
                 </button>
-                <p>Already have an account? <a href="#">Sign In</a></p>
+                <p>Already have an account? <a id='loginLink' href="/login">Sign In</a></p>
             </form>
         );
     }

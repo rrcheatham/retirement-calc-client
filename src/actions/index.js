@@ -33,3 +33,8 @@ export const setExpenses = expenses => ({
     type: SET_EXPENSES,
     expenses
 });
+
+export const SET_TARGET = 'SET_TARGET';
+export const setTarget = () => ({
+    type: SET_TARGET
+});

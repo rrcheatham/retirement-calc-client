@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
 import store from './store';
-import LandingPage from './components/landing-page';
+import App from './app';
 import Dashboard from './components/dashboard';
-import Login from './components/login';
 
 ReactDOM.render(
     <Provider store={store}>
-        <Login />
+        <App />
     </Provider>, 
     document.getElementById('root')
 );

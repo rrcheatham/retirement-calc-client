@@ -1,0 +1,20 @@
+#resultsDiv {
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 2px solid rgb(170, 169, 169);
+    border-right: 2px solid rgb(170, 169, 169);
+    border-bottom: 2px solid rgb(170, 169, 169);
+    margin-top: 0;
+    line-height: 1.5em;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #414141;
+    color: whitesmoke;
+    padding-top: 5px;
+}
+
+#resultsDiv p {
+    margin-top: 0;
+}

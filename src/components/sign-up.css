@@ -42,3 +42,7 @@
 #signUpForm p {
     align-self: center; 
 }
+
+#loginLink {
+    color: white;
+}

@@ -7,8 +7,8 @@ export default function NavBar(props) {
         <nav>
             <img id="logo" src={logo} alt='Fintech Guru Logo' />
             <div id="links">
-                <button id="login" class="btn-class">Login</button>
-                <button id="logout" class="btn-class">Logout</button>
+                <button id="login" className="btn-class"><a href="/login">Login</a></button>
+                <button id="logout" className="btn-class">Logout</button>
             </div>
         </nav>
     );

@@ -1,12 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './bar-chart.css';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-const data = [
-      {name: 'Savings', target: 1000000, projected: 950000}
-];
+//const data = [
+ //     {name: 'Savings', target: 1000000, projected: 950000}
+//];
 
-export default class SimpleBarChart extends React.Component {
-	render () {
+export function SimpleBarChart(props) {
+      const data = [
+            {name: 'Savings', target: props.totalNeeded, projected: props.totalActual}
+      ];
   	return (
       <div id="barChartDiv">
             <h2 id="barChartTitle">Projected vs. Target<br />Retirement Savings</h2>
@@ -20,6 +23,17 @@ export default class SimpleBarChart extends React.Component {
             </BarChart>
       </div>
     );
-    }
 }
+
+SimpleBarChart.defaultProps = {
+      totalActual: 0,
+      totalNeeded: 0
+};
+
+export const mapStateToProps = state => ({
+      totalActual: state.totalActual,
+      totalNeeded: state.totalNeeded
+});
+
+export default connect(mapStateToProps)(SimpleBarChart);
 
