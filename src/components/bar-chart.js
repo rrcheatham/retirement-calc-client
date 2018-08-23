@@ -1,10 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './bar-chart.css';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-//const data = [
- //     {name: 'Savings', target: 1000000, projected: 950000}
-//];
+import { BarChart, Bar, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 export function SimpleBarChart(props) {
       const data = [
@@ -31,8 +28,8 @@ SimpleBarChart.defaultProps = {
 };
 
 export const mapStateToProps = state => ({
-      totalActual: state.totalActual,
-      totalNeeded: state.totalNeeded
+      totalActual: state.calc.totalActual,
+      totalNeeded: state.calc.totalNeeded
 });
 
 export default connect(mapStateToProps)(SimpleBarChart);

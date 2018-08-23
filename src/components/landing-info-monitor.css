@@ -14,3 +14,10 @@
 #monitorImage {
     width: 250px;
 }
+
+@media screen and (min-width: 768px) {
+    #monitorImage {
+        width: 350px;
+    }
+
+}

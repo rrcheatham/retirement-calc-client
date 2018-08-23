@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 import Header from './header';
 import LandingInfoSet from './landing-info-set';
@@ -9,24 +11,29 @@ import Footer from './footer';
 
 import './landing-page.css';
 
-export default class LandingPage extends React.Component {
-    constructor(props) {
-        super(props);
+export function LandingPage(props) {
+
+    if(props.loggedIn) {
+        return <Redirect to="/dashboard" />;
     }
 
-    render() {
-        return (
-            <div>
-                <Header />
-                <main>
-                    <LandingInfoSet />
-                    <LandingInfoTarget />
-                    <LandingInfoMonitor />
-                    <SignUpForm />
-                </main>
-                <Footer />
-            </div>
-        );
-    }
+    return (
+        <div>
+            <Header />
+            <main>
+                <LandingInfoSet />
+                <LandingInfoTarget />
+                <LandingInfoMonitor />
+                <SignUpForm />
+            </main>
+            <Footer />
+        </div>
+    );
 }
+
+const mapStateToProps = state => ({
+    loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(LandingPage);
 

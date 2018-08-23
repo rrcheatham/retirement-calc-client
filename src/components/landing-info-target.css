@@ -14,3 +14,10 @@
 #targetsImage {
     width: 250px;
 }
+
+@media screen and (min-width: 768px) {
+    #targetsImage {
+        width: 350px;
+    }
+
+}

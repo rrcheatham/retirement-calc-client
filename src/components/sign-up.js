@@ -1,21 +1,38 @@
 import React from 'react';
 import Input from './input';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
-import {required, nonEmpty, email} from '../validators';
-
+import {reduxForm, Field, focus} from 'redux-form';
+import {registerUser} from '../actions/users';
+import {login} from '../actions/auth';
+import {required, nonEmpty, email, matches, length, isTrimmed} from '../validators';
 
 import './sign-up.css';
 
+const passwordLength = length({min: 10, max: 72});
+const matchesPassword = matches('password');
+
 export class SignUpForm extends React.Component {
+    onSubmit(values) {
+        const {email, password, firstName, lastName} = values;
+        const user = {email, password, firstName, lastName};
+        return this.props
+            .dispatch(registerUser(user))
+            .then(() => this.props.dispatch(login(email, password)));
+    }
     render() {
         return (
-            <form id="signUpForm">
+            <form 
+                id="signUpForm"
+                className="login-form"
+                onSubmit={this.props.handleSubmit(values =>
+                    this.onSubmit(values)
+                )}>
                 <Field 
                     name="firstName"
                     type="text"
                     component={Input}
                     label="First Name:"
                     placeholder="First Name"
+                    validate={[required, nonEmpty]}
                 />
                 <Field
                     name="lastName"
@@ -23,6 +40,7 @@ export class SignUpForm extends React.Component {
                     component={Input}
                     label="Last Name:"
                     placeholder="Last Name"
+                    validate={[required, nonEmpty]}
                 />
                 <Field
                     name="email"
@@ -30,24 +48,28 @@ export class SignUpForm extends React.Component {
                     component={Input}
                     label="Email:"
                     placeholder="Email"
+                    validate={[required, nonEmpty, email, isTrimmed]}
                 />
                 <Field
                     name="password"
-                    type="text"
+                    type="password"
                     component={Input}
                     label="Password:"
                     placeholder="Password"
+                    validate={[required, passwordLength, isTrimmed]}
                 />
                 <Field
                     name="conformPassword"
-                    type="text"
+                    type="password"
                     component={Input}
                     label="Confirm Password:"
                     placeholder="Confirm Password"
+                    validate={[required, nonEmpty, matchesPassword]}
                 />
                 <button
                     type="submit"
-                    class="btn-class"
+                    disabled={this.props.pristine || this.props.submitting}
+                    className="btn-class"
                 >
                 Start Planning
                 </button>
@@ -58,5 +80,7 @@ export class SignUpForm extends React.Component {
 }
 
 export default reduxForm({
-    form: 'sign-up'
+    form: 'sign-up',
+    onSubmitFail: (errors, dispatch) =>
+        dispatch(focus('sign-up', Object.keys(errors)[0]))
 })(SignUpForm);

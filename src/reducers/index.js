@@ -5,11 +5,12 @@ import {
     SET_CONTRIBUTION, 
     SET_RETIREMENT_AGE,
     SET_EXPENSES,
-    SET_TARGET
+    SET_TARGET,
+    FETCH_INPUTS_SUCCESS,
+    FETCH_INPUTS_ERROR,
+    UPDATE_INPUTS_SUCCESS,
+    UPDATE_INPUTS_ERROR
 } from '../actions';
-
-import { Finance } from 'financejs';
-let finance = new Finance();
 
 const initialState = {
     age: 35,
@@ -21,6 +22,23 @@ const initialState = {
 };
 
 export const retirementCalcReducer = (state=initialState, action) => {
+    if (action.type === FETCH_INPUTS_SUCCESS) {
+        return Object.assign({}, state, {
+           id: action.data.id,
+           age: action.data.age,
+           income: action.data.income,
+           savings: action.data.savings,
+           contribution: action.data.contribution,
+           retirementAge: action.data.retirementAge,
+           expenses: action.data.expenses
+        });
+    }
+
+    if (action.type === FETCH_INPUTS_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
+        });
+    }
     if (action.type === SET_AGE) {
         return Object.assign({}, state, {
             age: action.age
@@ -58,7 +76,7 @@ export const retirementCalcReducer = (state=initialState, action) => {
         let futureExpenses = state.expenses * Math.pow(1.03, investYears);
         let totalNeeded = futureExpenses * payoutYears;
         let savingsFV = state.savings * Math.pow(1.05, investYears);
-        let contributionFV = annualContribution * (Math.pow(1.02, investYears) - Math.pow(1.05, investYears)) / (.02  - .06);
+        let contributionFV = annualContribution * (Math.pow(1.02, investYears) - Math.pow(1.05, investYears)) / (.02  - .05);
         let totalActual = contributionFV + savingsFV;
         let difference = totalNeeded - totalActual;
         let status;
@@ -71,7 +89,7 @@ export const retirementCalcReducer = (state=initialState, action) => {
         } else {
             status = "In Trouble"
         }
-        let addSavings = annualContribution / ((Math.pow(1.02, investYears) - Math.pow(1.05, investYears)) / (.02 - .05));
+        let addSavings = difference / ((Math.pow(1.02, investYears) - Math.pow(1.05, investYears)) / (.02 - .05));
         let reqContribution = (addSavings + annualContribution) / state.income;
         return Object.assign({}, state, {
             totalNeeded: totalNeeded,
@@ -80,6 +98,11 @@ export const retirementCalcReducer = (state=initialState, action) => {
             shortfall: difference,
             addSavings: addSavings,
             reqContribution: reqContribution
+        });
+    }
+    else if(action.type === UPDATE_INPUTS_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
         });
     }
     return state;

@@ -8,8 +8,9 @@ import UserInputsForm from './user-inputs';
 import SimpleBarChart from './bar-chart';
 import Feedback from './feedback';
 import Results from './results';
+import requiresLogin from './requires-login';
 
-export default class Dashboard extends React.Component {
+export class Dashboard extends React.Component {
     render() {
         return (
             <div>
@@ -25,3 +26,5 @@ export default class Dashboard extends React.Component {
         );
     }
 }
+
+export default requiresLogin()(Dashboard);

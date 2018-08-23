@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 import Header from './header';
 import Footer from './footer';
@@ -6,20 +8,24 @@ import LoginForm from './login-form';
 
 import './login.css';
 
-export default class Login extends React.Component {
-    constructor(props) {
-        super(props);
+export function Login(props) {
+    if (props.loggedIn) {
+        return <Redirect to="/dashboard" />;
     }
 
-    render() {
-        return (
-            <div>
-                <Header />
-                <main>
-                    <LoginForm />
-                </main>
-                <Footer />
-            </div>
-        );
-    }
+    return (
+        <div>
+            <Header />
+            <main>
+                <LoginForm />
+            </main>
+            <Footer />
+        </div>
+    );
 }
+
+const mapStateToProps = state => ({
+    loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(Login);

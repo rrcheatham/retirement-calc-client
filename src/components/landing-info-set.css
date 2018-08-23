@@ -18,3 +18,10 @@
     padding-left: 5px;
     padding-right: 5px;
 }
+
+@media screen and (min-width: 768px) {
+    #inputsImage {
+        width: 350px;
+    }
+
+}

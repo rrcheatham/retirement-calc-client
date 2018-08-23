@@ -1,12 +1,25 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
+import thunk from 'redux-thunk';
+import {loadAuthToken} from './local-storage';
 import {retirementCalcReducer} from './reducers';
+import authReducer from './reducers/auth';
+import {setAuthToken, refreshAuthToken} from './actions/auth';
 
-//export default createStore(
-//    combineReducers({
-//        form: formReducer,
-//        calc: retirementCalcReducer
-//    })
-//);
+const store = createStore(
+    combineReducers({
+        form: formReducer,
+        auth: authReducer,
+        calc: retirementCalcReducer
+    }),
+    applyMiddleware(thunk)
+);
 
-export default createStore(retirementCalcReducer);
+const authToken = loadAuthToken();
+if (authToken) {
+    const token = authToken;
+    store.dispatch(setAuthToken(token));
+    store.dispatch(refreshAuthToken());
+}
+
+export default store;

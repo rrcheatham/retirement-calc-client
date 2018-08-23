@@ -10,11 +10,11 @@ export function Feedback(props) {
 }
 
 Feedback.defaultProps = {
-    status: 'On Track!'
+    status: 'Submit Inputs'
 };
 
 export const mapStateToProps = state => ({
-    status: state.status
+    status: state.calc.status
 });
 
 export default connect(mapStateToProps)(Feedback);

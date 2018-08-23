@@ -14,3 +14,10 @@
 #status {
     color: yellow;
 }
+
+@media screen and (min-width: 768px) {
+    #feedback {
+        width: 580px;
+    }
+
+}

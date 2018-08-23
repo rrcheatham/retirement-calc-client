@@ -27,9 +27,9 @@ Results.defaultProps = {
 };
 
 export const mapStateToProps = state => ({
-    shortfall: state.shortfall,
-    addSavings: state.addSavings,
-    reqContribution: state.reqContribution
+    shortfall: state.calc.shortfall,
+    addSavings: state.calc.addSavings,
+    reqContribution: state.calc.reqContribution
 });
 
 export default connect(mapStateToProps)(Results);

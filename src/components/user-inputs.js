@@ -1,25 +1,38 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './user-inputs.css';
+import {fetchInputs, updateInputs} from '../actions/index';
 
 import {setAge, setIncome, setSavings, setContribution, setRetirementAge, setExpenses, setTarget} from '../actions';
 
 class UserInputsForm extends React.Component {
-    constructor(props) {
-        super(props);
+    componentDidMount() {
+        this.props.dispatch(fetchInputs());
     }
 
     onSubmit(event) {
         event.preventDefault();
         this.props.dispatch(setTarget());
+        this.props.dispatch(updateInputs());
     }
 
     render() {
+        let error;
+        if (this.props.error) {
+            error = (
+                <div className="fetch-error" aria-live="polite">
+                    {this.props.error}
+                </div>
+            );
+        }
         return (
             <form id="userInputForm"
                 onSubmit={e => this.onSubmit(e)}>
+                {error}
                 <div className="form-input">
-                    <label htmlFor="age">Age:</label>
+                    <label htmlFor="age">
+                        Age:
+                    </label>
                     <input 
                         name="age"
                         type="number"
@@ -39,7 +52,10 @@ class UserInputsForm extends React.Component {
                     />
                 </div>
                 <div className="form-input">
-                    <label htmlFor="totalSavings">Total Current Savings:</label>
+                    <label className="tooltip" htmlFor="totalSavings">
+                        Total Current Savings:
+                        <span className="tooltiptext">Include cash value of any assets that you will sell to fund retirement</span>
+                    </label>
                     <input 
                         name="totalSavings"
                         type="number"
@@ -49,7 +65,10 @@ class UserInputsForm extends React.Component {
                     />
                 </div>
                 <div className="form-input">
-                    <label htmlFor="monthlySavings">% of Salary Contributed:</label>
+                    <label className="tooltip" htmlFor="monthlySavings">
+                        % of Salary Contributed:
+                        <span className="tooltiptext">You should target at least 10% of your salary each year</span>
+                    </label>
                     <input 
                         name="monthlySavings"
                         type="number"
@@ -70,8 +89,10 @@ class UserInputsForm extends React.Component {
                     />
                 </div>
                 <div className="form-input">
-                    <label htmlFor="retirementExpenses">Annual Retirement Expenses<br />
-                    (in today's dollars):
+                    <label className="tooltip" htmlFor="retirementExpenses">
+                        Annual Retirement Expenses<br />
+                        (in today's dollars):
+                        <span className="tooltiptext">A general rule of thumb is 70% of your current salary</span>
                     </label>
                     <input 
                         name="retirementExpenses"
@@ -93,25 +114,25 @@ class UserInputsForm extends React.Component {
 }
 
 UserInputsForm.defaultProps = {
-    age: 0, 
-    income: 0,
-    savings: 0,
+    age: 100, 
+    income: 100,
+    savings: 100,
     contribution: 10,
     retirementAge: 70,
-    expenses: 0
+    expenses: 100
 };
 
 export const mapStateToProps = state => ({
-    age: state.age,
-    income: state.income,
-    savings: state.savings,
-    contribution: state.contribution,
-    retirementAge: state.retirementAge,
-    expenses: state.expenses
+    age: state.calc.age,
+    income: state.calc.income,
+    savings: state.calc.savings,
+    contribution: state.calc.contribution,
+    retirementAge: state.calc.retirementAge,
+    expenses: state.calc.expenses,
+    error: state.calc.error,
+    data: state.calc.data,
+    user: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(UserInputsForm);
 
-//export default reduxForm({
-//    form: 'user inputs'
-//})(UserInputsForm);

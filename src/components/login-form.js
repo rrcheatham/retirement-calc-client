@@ -1,28 +1,54 @@
 import React from 'react';
-
 import './login-form.css';
-
 import Input from './input';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
-import {required, nonEmpty, email} from '../validators';
+import {reduxForm, Field, focus} from 'redux-form';
+import {login} from '../actions/auth';
+import {required, nonEmpty} from '../validators';
 
 export class LoginForm extends React.Component {
+    onSubmit(values) {
+        return this.props.dispatch(login(values.email, values.password));
+    }
+
     render() {
+        let error;
+        if (this.props.error) {
+            error = (
+                <div className="form-error" aria-live="polite">
+                    {this.props.error}
+                </div>
+            );
+        }
+
         return (
-            <form id='loginForm'>
+            <form 
+                id='loginForm'
+                className="login-form"
+                onSubmit={this.props.handleSubmit(values =>
+                    this.onSubmit(values)
+                )}>
+                {error}
                 <Field 
                     name='email'
                     type='email'
+                    id='email'
                     component={Input}
                     label='Email:'
+                    validate={[required, nonEmpty]}
                 />
                 <Field
                     name='password'
-                    type='text'
+                    id="password"
+                    type='password'
                     component={Input}
                     label='Password:'
+                    validate={[required, nonEmpty]}
                 />
-                <button class='btn-class' type='submit'>
+                <button 
+                    className='btn-class' 
+                    type='submit'
+                    //disabled={this.props.pristine || this.props.submitting}
+                    >
                     Login
                 </button>
             </form>
@@ -31,5 +57,6 @@ export class LoginForm extends React.Component {
 }
 
 export default reduxForm({
-    form: 'login'
+    form: 'login',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'email'))
 })(LoginForm);
