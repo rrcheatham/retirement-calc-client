@@ -39,13 +39,14 @@ nav {
     border:1px solid #5D7FBC;
     color: #fff;
     background-color: #97A8C7;
+    cursor: pointer;
    }
 
    #logout {
        margin-left: 5px;
    }
 
-   button a{
+   .btn-class a{
        text-decoration: none;
        color: #fff;
    }

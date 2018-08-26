@@ -8,7 +8,6 @@ import {
     SET_TARGET,
     FETCH_INPUTS_SUCCESS,
     FETCH_INPUTS_ERROR,
-    UPDATE_INPUTS_SUCCESS,
     UPDATE_INPUTS_ERROR
 } from '../actions';
 

@@ -5,7 +5,7 @@ import {fetchInputs, updateInputs} from '../actions/index';
 
 import {setAge, setIncome, setSavings, setContribution, setRetirementAge, setExpenses, setTarget} from '../actions';
 
-class UserInputsForm extends React.Component {
+export class UserInputsForm extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchInputs());
     }

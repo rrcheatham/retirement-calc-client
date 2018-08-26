@@ -17,17 +17,17 @@ export class NavBar extends React.Component {
             <nav>
                 <img id="logo" src={logo} alt='Fintech Guru Logo' />
                 <div id="links">
-                    <button 
+                    <div
                         id="login" 
                         className="btn-class">
                         <a href="/login">Login</a>
-                    </button>
-                    <button 
+                    </div>
+                    <div
                         id="logout" 
                         className="btn-class"
                         onClick={() => this.logOut()}>
                         Logout
-                    </button>
+                    </div>
                 </div>
             </nav>
         );

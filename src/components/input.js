@@ -19,8 +19,6 @@ export default class Input extends React.Component {
             );
         }
 
-        //const Element = this.props.element || 'input';
-
         return (
             <div className="form-input">
                 <label htmlFor={this.props.input.name}>

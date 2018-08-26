@@ -80,12 +80,6 @@ export const setTarget = () => ({
     type: SET_TARGET
 });
 
-export const UPDATE_INPUTS_SUCCESS = 'UPDATE_INPUTS_SUCCESS';
-export const updateInputsSuccess = inputs => ({
-    type: UPDATE_INPUTS_SUCCESS,
-    inputs
-});
-
 export const UPDATE_INPUTS_ERROR = 'UPDATE_INPUTS_ERROR';
 export const updateInputsError = error => ({
     type: UPDATE_INPUTS_ERROR,
