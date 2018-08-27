@@ -1,6 +1,6 @@
-# The Fintech Guru Expense Tracker
+# The Good Life Retirement Tracker
 
-![Screenshot of account page]()
+![Screenshot of account page](https://github.com/rrcheatham/retirement-calc-client/blob/master/screenshot.PNG)
 
 *website: https://arcane-taiga-47013.herokuapp.com/*
 
