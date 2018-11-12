@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
-import Header from './header';
+import InitialNavBar from './initial_Nav_Bar'
 import Footer from './footer';
 import LoginForm from './login-form';
 
@@ -15,7 +15,7 @@ export function Login(props) {
 
     return (
         <div>
-            <Header />
+            <InitialNavBar />
             <main>
                 <LoginForm />
             </main>

@@ -14,7 +14,7 @@ export class NavBar extends React.Component {
     render() {
 
         return (
-            <nav>
+            <nav id="dashboardNav">
                 <img id="logo" src={logo} alt='Fintech Guru Logo' />
                 <div id="links">
                     <div

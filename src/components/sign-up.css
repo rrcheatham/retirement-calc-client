@@ -1,17 +1,15 @@
 #signUpForm {
-    background-color: #414141;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 10px 10px 10px;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     color: whitesmoke;
-    max-width: 90%;
+    max-width: 95%;
     border-radius: 4px;
-    margin-top: 10px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 80vh;
 }
 
 #signUpForm label {
@@ -36,6 +34,16 @@
 #signUpForm button {
     margin-top: 5px;
     align-self: center;
+    border: 2px solid whitesmoke;
+    background: none;
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 5px 5px 5px 5px;
+}
+
+#signUpForm button:hover, #signUpForm button:active {
+    background: black;
 }
 
 #signUpForm p {
@@ -45,4 +53,18 @@
 #loginLink {
     color: white;
 }
+
+#formTitle {
+    font-size: 2em;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    #formTitle {
+        font-size: 2.5em;
+    }
+}
+
+
 

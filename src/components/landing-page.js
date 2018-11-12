@@ -2,10 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
-import Header from './header';
+import InitialNavBar from './initial_Nav_Bar';
+import LandingStart from './landing-start';
 import LandingInfoSet from './landing-info-set';
-import LandingInfoTarget from './landing-info-target';
-import LandingInfoMonitor from './landing-info-monitor';
 import SignUpForm from './sign-up';
 import Footer from './footer';
 
@@ -19,11 +18,10 @@ export function LandingPage(props) {
 
     return (
         <div>
-            <Header />
+            <InitialNavBar />
             <main>
+                <LandingStart />
                 <LandingInfoSet />
-                <LandingInfoTarget />
-                <LandingInfoMonitor />
                 <SignUpForm />
             </main>
             <Footer />

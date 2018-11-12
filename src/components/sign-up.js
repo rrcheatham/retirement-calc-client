@@ -26,6 +26,9 @@ export class SignUpForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <div id="formTitle">
+                    Sign-up and Start Planning Now!
+                </div>
                 <Field 
                     name="firstName"
                     type="text"
@@ -69,9 +72,8 @@ export class SignUpForm extends React.Component {
                 <button
                     type="submit"
                     disabled={this.props.pristine || this.props.submitting}
-                    className="btn-class"
                 >
-                Start Planning
+                Get Started
                 </button>
                 <p>Already have an account? <a id='loginLink' href="/login">Sign In</a></p>
             </form>

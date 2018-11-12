@@ -1,0 +1,62 @@
+#start {
+    height: 80vh;
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#start h1 {
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+}
+
+#start a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 5px 5px 5px;
+    font-size: 1em;
+    border: 2px solid black;
+    background-color: none;
+    margin: 5px 5px 5px 5px;
+    text-transform: uppercase;
+}
+
+#learnMore {
+    margin-top: 105px;
+}
+
+#learnMore a {
+    text-decoration: none;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    color: black;
+    border: 2px solid black;
+}
+
+#learnMore a:hover, #learnMore a:active,
+#start a:hover, #start a:active {
+    color: white;
+    background: black;
+}
+
+@media screen and (min-width: 768px) {
+    #start {
+        height: 100vh;
+    }
+    
+    #start h1 {
+        font-size: 4.4em;
+    }
+
+    #start a {
+        font-size: 1.5em;
+    }
+
+    #learnMore a {
+        font-size: 2em;
+    }
+}

@@ -10,6 +10,8 @@
     margin-bottom: 0;
     border: 2px solid rgb(170, 169, 169);
     border-bottom: none;
+    background-color:#282828;
+    color: whitesmoke;
 }
 
 #userInputForm label {
@@ -43,6 +45,16 @@
 #userInputForm button {
     margin-top: 5px;
     align-self: center;
+    background: none;
+    font-size: 22px;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+}
+
+#userInputForm button:hover, #userInputForm button:active {
+    background: white;
+    color: black;
+    border: 2px solid black;
 }
 
  /* Tooltip container */

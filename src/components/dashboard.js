@@ -2,7 +2,7 @@ import React from 'react';
 
 import './dashboard.css';
 
-import Header from './header';
+import DashNavBar from './dashNavBar';
 import Footer from './footer';
 import UserInputsForm from './user-inputs';
 import SimpleBarChart from './bar-chart';
@@ -14,7 +14,7 @@ export class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                <Header />
+                <DashNavBar />
                 <main>
                     <UserInputsForm />
                     <Feedback />
